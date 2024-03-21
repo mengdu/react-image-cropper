@@ -1,0 +1,120 @@
+.cropper {
+  &-view {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    // background-color: #DBDEE3;
+    background-color: rgba(255, 255, 255, 0.2);
+    background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.2) 25%, transparent 0),
+                      linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.2) 0),
+                      linear-gradient(45deg, rgba(0, 0, 0, 0.2) 25%, transparent 0),
+                      linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.2) 0);
+    background-position: 0 0,7px 7px,7px 7px,14px 14px;
+    background-size: 14px 14px;
+    user-select: none;
+  }
+
+  &-area {
+    position: absolute;
+    box-sizing: border-box;
+    background-color: transparent;
+    // border: dashed 1px #fff;
+    outline: solid 5000px rgba(0, 0, 0, 0.3);
+    transition: width,height 0.5s cubic-bezier(0, 0, 0, 1);
+  }
+
+  &-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    transition: transform 0.8s cubic-bezier(0, 0, 0, 1);
+  }
+  &-view.is-move &-img {
+    transition: none;
+  }
+
+  .ant {
+    background: repeating-linear-gradient(-45deg, rgba(255, 255, 255, 0.8) 0, rgba(255, 255, 255, 0.8) 25%, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.5) 50%) repeat;
+    background-size: 10px 10px;
+    animation: antAnime 0.5s linear infinite;
+    position: absolute;
+  }
+
+  .ant-t {
+    height: 1px;
+    width: 100%;
+    top: 0;
+  }
+
+  .ant-b {
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .ant-l {
+    width: 1px;
+    height: 100%;
+    left: 0;
+  }
+
+  .ant-r {
+    width: 1px;
+    height: 100%;
+    right: 0;
+  }
+  .control-box {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 1);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+
+    button {
+      border: solid 1px rgba(255, 255, 255, 0.5);
+      outline: none;
+      background: transparent;
+      padding: 0;
+      min-width: 25px;
+      height: 20px;
+      padding: 0 5px;
+      text-align: center;
+      font-size: 12px;
+      color: inherit;
+      margin-right: -1px;
+      vertical-align: middle;
+      cursor: pointer;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.244);
+      }
+
+      svg {
+        width: 10px;
+        height: 10px;
+        vertical-align: middle;
+      }
+    }
+  }
+  &:hover .control-box {
+    opacity: 0.5;
+  }
+  .control-box:hover {
+    opacity: 1;
+  }
+}
+
+@keyframes antAnime {
+  from {
+    background-position: 0px;
+  }
+
+  to {
+    background-position: 10px;
+  }
+}
