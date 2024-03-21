@@ -305,7 +305,6 @@ export default function ImageCropper(props: ImageCropperProps) {
   }, [props.size?.w, props.size?.h])
 
   useEffect(() => {
-    console.log(2, props.src)
     getImageSize(props.src).then(res => {
       setImg({
         src: props.src,

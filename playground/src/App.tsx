@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { ImageCropper } from '../../src'
 
 function App() {
-  const [img, setImg] = useState('/demo.png')
+  const [img, setImg] = useState('./demo.png')
   const [blob, setBlob] = useState<Blob | null>()
   const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0]
