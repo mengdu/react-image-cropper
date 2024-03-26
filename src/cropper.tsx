@@ -184,17 +184,19 @@ export default function ImageCropper(props: ImageCropperProps) {
       return
     }
 
-    const target = document.createElement('canvas')
-    target.width = data.area.w
-    target.height = data.area.h
-    const targetctx = target.getContext('2d')!
-    targetctx.drawImage(imgEl.current,
+    const canvas = document.createElement('canvas')
+    canvas.width = data.area.w
+    canvas.height = data.area.h
+    const ctx = canvas.getContext('2d')!
+    ctx.drawImage(
+      imgEl.current,
       (data.area.x - data.img.x) / data.img.scale,
       (data.area.y - data.img.y) / data.img.scale,
       data.area.w / data.img.scale,
       data.area.h / data.img.scale,
-      0, 0, data.area.w, data.area.h)
-    target.toBlob((e) => {
+      0, 0, data.area.w, data.area.h
+    )
+    canvas.toBlob((e) => {
       data.blob = e
       props.onComplete!(data)
     }, 'image/png', '1')
